@@ -1,5 +1,5 @@
-.vscode/
-CMakeFiles/
-CMakeCache.txt
-Makefile
-*.cmake
+**/.vscode/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/Makefile
+**/*.cmake
