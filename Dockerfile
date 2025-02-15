@@ -35,5 +35,4 @@ EXPOSE 8000
 RUN mkdir build && cd build && cmake .. && make -j$(nproc)
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-# CMD ["python", "app.py"]
 CMD ["/bin/bash"]
