@@ -1,0 +1,9 @@
+[submodule "flight-software"]
+	path = flight-software
+	url = https://github.com/jbonnells/flight-software.git
+[submodule "ground-control"]
+	path = ground-control
+	url = https://github.com/jbonnells/ground-control.git
+[submodule "serial-device"]
+	path = serial-device
+	url = https://github.com/jbonnells/serial-device.git
