@@ -16,6 +16,8 @@ To recompile the project from within the container shell, execute the following 
 ```bash
 $ ./compile.sh
 ```
+
+## Operating Instructions
 See the individual modules for specific operating instructions.
 
 ## Helpful Tips
