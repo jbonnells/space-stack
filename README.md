@@ -1,9 +1,9 @@
 ```text
 ____ ___  ____ ____ ____    ____ ___ ____ ____ _  _ 
-[__  |__] |__| |    |___ __ [__   |  |__| |    |_/  
+[__  |__] |__| |    |___    [__   |  |__| |    |_/  
 ___] |    |  | |___ |___    ___]  |  |  | |___ | \_ 
 ```
-#                                                                                                                
+#  
 This personal side project explores aerospace technology by designing flight software, ground station systems, emulated serial devices, post-processing GUI tools, etc. in multiple programming languages. It focuses on developing integrated systems that simulate real-world aerospace operations.
 
 ## Submodules
