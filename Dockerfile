@@ -1,11 +1,16 @@
-# For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3-slim
+FROM node:23-alpine
 
-# Install dependencies for C++23 and CMake
-RUN apt-get update && apt-get install -y \
+# Install dependencies
+RUN apk add --no-cache \
     g++ \
+    bash \
     cmake \
-    && rm -rf /var/lib/apt/lists/*
+    git \
+    boost-dev \
+    linux-headers \
+    make \
+    python3 \
+    py3-pip
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -18,7 +23,7 @@ WORKDIR /app
 
 # Install pip requirements
 COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+RUN python -m pip install -r requirements.txt --break-system-packages
 
 # Copy application code 
 COPY . /app
@@ -28,11 +33,16 @@ COPY . /app
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
 
-# Expose port that app runs on 
-EXPOSE 8000
+# Expose ports (React: 3000, WebSocket Server: 8000)
+EXPOSE 4000 8000
 
 # Build the C++ project
-RUN mkdir build && cd build && cmake .. && make -j$(nproc)
+RUN mkdir build && cd build && cmake .. -DCMAKE_CXX_STANDARD=23 && make -j$(nproc)
 
-# During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
+# # Start the React app
+# CMD ["npm", "start"]
+
+# Start both the C++ WebSocket server and the React app
+# CMD ["sh", "-c", "./build/server & npm start"]
+
 CMD ["/bin/bash"]
